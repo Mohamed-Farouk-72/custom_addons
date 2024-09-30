@@ -1,0 +1,13 @@
+<data>
+    <!--Payslip Server Action -->
+    <record id="payment_advance_action_server" model="ir.actions.server">
+        <field name="name">Create Payment</field>
+        <field name="type">ir.actions.server</field>
+        <field name="model_id" ref="model_hr_payslip"/>
+        <field name="binding_model_id" ref="model_hr_payslip"/>
+        <field name="state">code</field>
+        <field name="code">
+            action = records.action_create_payment()
+        </field>
+    </record>
+</data>

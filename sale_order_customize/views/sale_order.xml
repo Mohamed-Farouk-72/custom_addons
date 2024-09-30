@@ -1,0 +1,12 @@
+<data>
+    <record id="inherited_sale_view_forms" model="ir.ui.view">
+        <field name="name">sale inherit</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="customer_sales_order" readonly="state != 'draft'"/>
+            </xpath>
+        </field>
+    </record>
+</data>
