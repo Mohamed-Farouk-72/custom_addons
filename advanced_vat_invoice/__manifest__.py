@@ -41,6 +41,14 @@
         'report/simplified_tax_report_templates.xml',
         'report/tax_invoice_report_template.xml'
     ],
+    'css': [
+        'static/css/font.css',
+    ],
+    'assets': {
+        'web.report_assets_common': [
+            'advanced_vat_invoice/static/css/font.css',
+        ],
+    },
     'images': ['static/description/banner.jpg'],
     'license': 'AGPL-3',
     'installable': True,

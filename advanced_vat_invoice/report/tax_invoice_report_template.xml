@@ -12,17 +12,17 @@
         <template id="report_invoice_zakat_tax_authority_document">
             <t t-call="advanced_vat_invoice.qr_invoice_internal_layout"
                style="margin-top:0px;padding-top:0px;display:inline;">
-                <div class="page" style="margin-top:0px;padding-top:0px;">
+                <div class="page" style="margin-top:0px;padding-top:0px;font-weight: bold;">
                     <center>
-                        <h4>فـاتـورة ضـريبية</h4>
+                        <h4 style="font-weight: bold;">فـاتـورة ضـريبية</h4>
                     </center>
                     <center>
-                        <h4>Tax Invoice</h4>
+                        <h4 style="font-weight: bold;">Tax Invoice</h4>
                     </center>
                     <table width="100%" class="table table-sm table-bordered" style="font-size:12px;">
                         <tr>
-                            <th width="15%" class="text-left">Type</th>
-                            <td width="20%" class="text-left">
+                            <th width="15%" class="text-left" style="text-align:left">Type</th>
+                            <td width="20%" class="text-left" style="text-align:left">
                                 <span t-if="o.move_type == 'out_invoice' and o.state == 'posted'">Invoice</span>
                                 <span t-if="o.move_type == 'out_invoice' and o.state == 'draft'">Draft Invoice</span>
                                 <span t-if="o.move_type == 'out_invoice' and o.state == 'cancel'">Cancelled Invoice
@@ -31,7 +31,7 @@
                                 <span t-if="o.move_type == 'in_refund'">Vendor Credit Note</span>
                                 <span t-if="o.move_type == 'in_invoice'">Vendor Bill</span>
                             </td>
-                            <td width="20%" class="text-right">
+                            <td width="20%" class="text-right" style="text-align:right">
                                 <span t-if="o.move_type == 'out_invoice' and o.state == 'posted'">فـاتورة</span>
                                 <span t-if="o.move_type == 'out_invoice' and o.state == 'draft'">فاتورة مبدئية</span>
                                 <span t-if="o.move_type == 'out_invoice' and o.state == 'cancel'">فاتورة ملغية</span>
@@ -39,72 +39,73 @@
                                 <span t-if="o.move_type == 'in_refund'">إشعار خصم مورد</span>
                                 <span t-if="o.move_type == 'in_invoice'">فاتورة مورد</span>
                             </td>
-                            <th width="15%" class="text-right">النوع</th>
+                            <th width="15%" class="text-right" style="text-align:right">النوع</th>
                             <td width="30%" rowspan="8">
-                                <t t-if="o.state == 'posted'">
-                                    <span t-field="o.qr" t-options='{"widget": "image"}'/>
-                                </t>
-                                <t t-else="">
-                                    <span>Qr will be generated after invoice confirmed</span>
-                                </t>
-
+                                <center>
+                                    <t t-if="o.state == 'posted'">
+                                        <span t-field="o.qr" t-options='{"widget": "image"}'/>
+                                    </t>
+                                    <t t-else="">
+                                        <span>Qr will be generated after invoice confirmed</span>
+                                    </t>
+                                </center>
                             </td>
                         </tr>
                         <tr>
-                            <th width="15%" class="text-left">Number</th>
+                            <th width="15%" class="text-left" style="text-align:left">Number</th>
                             <td width="40%" colspan="2" class="text-center">
                                 <span t-field="o.name"/>
                             </td>
-                            <th width="15%" class="text-right">رقم الفاتورة</th>
+                            <th width="15%" class="text-right" style="text-align:right">رقم الفاتورة</th>
                         </tr>
                         <tr>
-                            <th width="15%" class="text-left">Issue Date</th>
+                            <th width="15%" class="text-left" style="text-align:left">Issue Date</th>
                             <td width="40%" colspan="2" class="text-center">
                                 <span t-field="o.invoice_date"/>
                             </td>
-                            <th width="15%" class="text-right">تاريخ الإصدار</th>
+                            <th width="15%" class="text-right" style="text-align:right">تاريخ الإصدار</th>
                         </tr>
                         <tr>
-                            <th width="15%" class="text-left">Due Date</th>
+                            <th width="15%" class="text-left" style="text-align:left">Due Date</th>
                             <td width="40%" colspan="2" class="text-center">
                                 <span t-field="o.invoice_date_due"/>
                             </td>
-                            <th width="15%" class="text-right">تاريخ الإستحقاق</th>
+                            <th width="15%" class="text-right" style="text-align:right">تاريخ الإستحقاق</th>
                         </tr>
                         <tr>
-                            <th width="15%" class="text-left">Reference</th>
+                            <th width="15%" class="text-left" style="text-align:left">Reference</th>
                             <td width="40%" colspan="2" class="text-center">
-                                <span t-field="o.ref"/>
+                                <span t-field="o.reference"/>
                             </td>
-                            <th width="15%" class="text-right">المرجع</th>
+                            <th width="15%" class="text-right" style="text-align:right">المرجع</th>
                         </tr>
                         <tr>
-                            <th width="15%" class="text-left">Bank Name</th>
+                            <th width="15%" class="text-left" style="text-align:left">Bank Name</th>
                             <td width="40%" colspan="2" class="text-center">
                                 <span t-field="o.company_id.bank_name"/>
                             </td>
-                            <th width="15%" class="text-right">أسم البنك</th>
+                            <th width="15%" class="text-right" style="text-align:right">أسم البنك</th>
                         </tr>
                         <tr>
-                            <th width="15%" class="text-left">Account Number</th>
+                            <th width="15%" class="text-left" style="text-align:left">Account Number</th>
                             <td width="40%" colspan="2" class="text-center">
                                 <span t-field="o.company_id.account_number"/>
                             </td>
-                            <th width="15%" class="text-right">أسم الحساب</th>
+                            <th width="15%" class="text-right" style="text-align:right">أسم الحساب</th>
                         </tr>
                         <tr>
-                            <th width="15%" class="text-left">IBAN</th>
+                            <th width="15%" class="text-left" style="text-align:left">IBAN</th>
                             <td width="40%" colspan="2" class="text-center">
                                 <span t-field="o.company_id.iban"/>
                             </td>
-                            <th width="15%" class="text-right">أيبان</th>
+                            <th width="15%" class="text-right" style="text-align:right">أيبان</th>
                         </tr>
                     </table>
 
 
                     <table width="100%" class="table table-sm table-bordered" style="font-size:12px;">
                         <tr style="background-color:gray;color:white;">
-                            <th width="20%" class="text-left">Type</th>
+                            <th width="20%" class="text-left" style="text-align:left">Type</th>
                             <td width="30%" class="text-center">
                                 <span t-if="o.move_type in ['out_invoice','out_refund']">Customer</span>
                                 <span t-if="o.move_type in ['in_invoice','in_refund']">Vendor</span>
@@ -113,46 +114,47 @@
                                 <span t-if="o.move_type in ['out_invoice','out_refund']">عـمـيل</span>
                                 <span t-if="o.move_type in ['in_invoice','in_refund']">مـورد</span>
                             </td>
-                            <th width="20%" class="text-right">النوع</th>
+                            <th width="20%" class="text-right" style="text-align:right">النوع</th>
                         </tr>
                         <tr>
-                            <th width="20%" class="text-left">Name</th>
+                            <th width="20%" class="text-left" style="text-align:left">Name</th>
                             <td width="60%" colspan="2" class="text-center" style="font-size:15px;">
                                 <span t-field="o.partner_id.name"/>
                             </td>
-                            <th width="20%" class="text-right">الإسم</th>
+                            <th width="20%" class="text-right" style="text-align:right">الإسم</th>
                         </tr>
                         <tr>
-                            <th width="20%" class="text-left">Street Name</th>
+                            <th width="20%" class="text-left" style="text-align:left">Street Name</th>
                             <td width="60%" colspan="2" class="text-center">
                                 <span t-field="o.partner_id.street"/>
                             </td>
-                            <th width="20%" class="text-right">إسم الشارع</th>
+                            <th width="20%" class="text-right" style="text-align:right">إسم الشارع</th>
                         </tr>
                         <tr>
-                            <th width="20%" class="text-left">City</th>
+                            <th width="20%" class="text-left" style="text-align:left">City</th>
                             <td width="60%" colspan="2" class="text-center">
                                 <span t-field="o.partner_id.city"/>
                             </td>
-                            <th width="20%" class="text-right">المدينة</th>
+                            <th width="20%" class="text-right" style="text-align:right">المدينة</th>
                         </tr>
                         <tr>
-                            <th width="20%" class="text-left">Country</th>
+                            <th width="20%" class="text-left" style="text-align:left">Country</th>
                             <td width="60%" colspan="2" class="text-center">
                                 <span t-field="o.partner_id.country_id.name"/>
                             </td>
-                            <th width="20%" class="text-right">البلد</th>
+                            <th width="20%" class="text-right" style="text-align:right">البلد</th>
                         </tr>
                         <tr>
-                            <th width="20%" class="text-left">VAT Number</th>
+                            <th width="20%" class="text-left" style="text-align:left">VAT Number</th>
                             <td width="60%" colspan="2" class="text-center">
                                 <span t-field="o.partner_id.vat"/>
                             </td>
-                            <th width="20%" class="text-right">رقم تسجيل ضريبة القيمة المضافة</th>
+                            <th width="20%" class="text-right" style="text-align:right">رقم تسجيل ضريبة القيمة المضافة
+                            </th>
                         </tr>
                     </table>
 
-                    <table class="table table-sm table-bordered" style="font-size:10px;" name="invoice_line_table">
+                    <table class="table table-sm table-bordered" style="font-size:12px;" name="invoice_line_table">
                         <thead>
                             <tr style="background-color:#464343;color:white;">
                                 <th class="text-left">
@@ -241,37 +243,37 @@
 
                     <table width="100%" class="table table-sm table-bordered" style="font-size:12px;">
                         <tr style="background-color:gray;color:white;">
-                            <th width="30%" class="text-left">Total Amounts</th>
+                            <th width="30%" class="text-left" style="text-align:left">Total Amounts</th>
                             <th width="40%" class="text-left"></th>
-                            <th width="30%" class="text-right">إجمالي المبالغ</th>
+                            <th width="30%" class="text-right" style="text-align:right">إجمالي المبالغ</th>
                         </tr>
                         <tr>
-                            <th width="30%" class="text-left">Total (Excluding VAT)</th>
-                            <td width="40%" class="text-right">
+                            <th width="30%" class="text-left" style="text-align:left">Total (Excluding VAT)</th>
+                            <td width="40%" style="text-align:right">
                                 <span t-field="o.amount_untaxed"/>
                             </td>
-                            <th width="30%" class="text-right">(الإجمالي (غير شامل الضريبة</th>
+                            <th width="30%" class="text-right" style="text-align:right">(الإجمالي (غير شامل الضريبة</th>
                         </tr>
                         <tr>
-                            <th width="30%" class="text-left">Discount</th>
-                            <td width="40%" class="text-right">
+                            <th width="30%" class="text-left" style="text-align:left">Discount</th>
+                            <td width="40%" style="text-align:right">
                                 <span t-field="o.total_discount_amount"/>
                             </td>
-                            <th width="30%" class="text-right">مجموع الخصومات</th>
+                            <th width="30%" class="text-right" style="text-align:right">مجموع الخصومات</th>
                         </tr>
                         <tr>
-                            <th width="30%" class="text-left">Total VAT</th>
-                            <td width="40%" class="text-right">
+                            <th width="30%" class="text-left" style="text-align:left">Total VAT</th>
+                            <td width="40%" style="text-align:right">
                                 <span t-field="o.amount_tax"/>
                             </td>
-                            <th width="30%" class="text-right">مجموع الضريبة</th>
+                            <th width="30%" class="text-right" style="text-align:right">مجموع الضريبة</th>
                         </tr>
                         <tr>
-                            <th width="30%" class="text-left">Total(Including VAT)</th>
-                            <td width="40%" class="text-right">
+                            <th width="30%" class="text-left" style="text-align:left">Total(Including VAT)</th>
+                            <td width="40%" style="text-align:right">
                                 <span t-field="o.amount_total"/>
                             </td>
-                            <th width="30%" class="text-right">(المجموع (شامل الضريبة</th>
+                            <th width="30%" class="text-right" style="text-align:right">(المجموع (شامل الضريبة</th>
                         </tr>
                     </table>
                 </div>
@@ -283,77 +285,41 @@
                 <t t-foreach="docs" t-as="o">
                     <t t-set="lang" t-value="'en_US'"/>
                     <t t-set="o" t-value="o.with_context(lang=lang)"/>
-                    <t t-if="user_lang == 'en_US'">
-                        <div class="header" t-att-style="report_header_style" style="direction: ltr">
-                            <div class="o_boxed_header" style="direction: ltr;margin-top:10px;padding-top:10px;">
-                                <table width="100%">
-                                    <tr>
-                                        <td width="40%">
-                                            <div name="company_address" style="vertical-align:top;">
-                                                <span class="company_address" t-field="o.company_id.partner_id"
-                                                      t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'/>
-                                                <span t-if="o.company_id.vat" class="mt16"><t t-esc="'Tax ID'"/>:
-                                                    <span t-field="o.company_id.vat"/>
-                                                </span>
-                                            </div>
-                                        </td>
+                    <div class="header fw-bold" t-att-style="report_header_style"
+                         style="direction: ltr;">
+                        <div class="o_boxed_header" style="direction: ltr;margin-top:10px;padding-top:10px;">
+                            <table width="100%" class="table table-borderless" style="color:rgba(14, 13, 13, 0.8)">
+                                <tr>
+                                    <td width="40%">
+                                        <div name="company_address" style="vertical-align:top;">
+                                            <span class="company_address" t-field="o.company_id.partner_id"
+                                                  t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'/>
+                                            <span t-if="o.company_id.vat" class="mt16"><t t-esc="'Tax ID'"/>:
+                                                <span t-field="o.company_id.vat"/>
+                                            </span>
+                                        </div>
+                                    </td>
 
-                                        <td width="20%" style="vertical-align:top;">
-                                            <span t-field="o.company_id.logo" t-options='{"widget": "image"}'/>
-                                        </td>
-
-                                        <td width="40%" style="vertical-align:top;">
-                                            <t t-set="ar_o" t-value="o.with_context(lang='ar_AA')"/>
-                                            <div name="company_address" class="text-right">
-                                                <span class="company_address" t-field="ar_o.company_id.partner_id"
-                                                      t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'/>
-                                                <span t-if="o.company_id.vat" class="mt16"><t t-esc="'الرقم الضريبي'"/>:
-                                                    <span t-field="o.company_id.vat"/>
-                                                </span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
+                                    <td width="20%" style="vertical-align:top;">
+                                        <span t-field="o.company_id.logo" t-options='{"widget": "image"}'/>
+                                    </td>
+                                    <td width="40%" style="vertical-align:top;direction:rtl">
+                                        <t t-set="ar_o" t-value="o.with_context(lang='ar_001')"/>
+                                        <div name="company_address" class="text-right">
+                                            <span class="company_address" t-field="ar_o.company_id.partner_id"
+                                                  t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'/>
+                                            <span t-if="o.company_id.vat" class="mt16"><t t-esc="'الرقم الضريبي'"/>:
+                                                <span t-field="o.company_id.vat"/>
+                                            </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
                         </div>
-                    </t>
-                    <t t-else="">
-                        <div class="header" t-att-style="report_header_style" style="direction: rtl;">
-                            <div class="o_boxed_header" style="margin-top:10px;padding-top:10px;">
-                                <table width="100%">
-                                    <tr>
-                                        <td width="40%">
-                                            <t t-set="ar_o" t-value="o.with_context(lang='ar_AA')"/>
-                                            <div name="company_address" style="vertical-align:top;">
-                                                <span class="company_address" t-field="ar_o.company_id.partner_id"
-                                                      t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'/>
-                                                <span t-if="o.company_id.vat" class="mt16"><t t-esc="'الرقم الضريبي'"/>:
-                                                    <span t-field="o.company_id.vat"/>
-                                                </span>
-                                            </div>
-                                        </td>
-
-                                        <td width="20%" style="vertical-align:top;">
-                                            <span t-field="o.company_id.logo" t-options='{"widget": "image"}'/>
-                                        </td>
-                                        <td width="40%" style="vertical-align:top;">
-                                            <div name="company_address" style="text-align:left;">
-                                                <span class="company_address" t-field="o.company_id.partner_id"
-                                                      t-options='{"widget": "contact", "fields": ["address", "name"], "no_marker": true}'/>
-                                                <span t-if="o.company_id.vat" class="mt16"><t t-esc="'Tax ID'"/>:
-                                                    <span t-field="o.company_id.vat"/>
-                                                </span>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </t>
-
+                    </div>
                     <t t-call="advanced_vat_invoice.report_invoice_zakat_tax_authority_document" t-lang="lang"/>
 
-                    <div class="footer o_background_footer">
+                    <div class="footer o_background_footer fw-bold">
                         <div class="text-center">
                             <ul class="list-inline">
                                 <li t-if="o.company_id.phone" class="list-inline-item">
@@ -375,7 +341,7 @@
                                     <span t-esc="o.company_id.vat.replace(' ','\N{NO-BREAK SPACE}')"/>
                                 </li>
                             </ul>
-                            <div t-field="o.company_id.report_footer"/>
+<!--                            <div t-field="o.company_id.report_footer"/>-->
                             <div t-if="report_type == 'pdf'" class="text-muted">
                                 Page:
                                 <span class="page"/>

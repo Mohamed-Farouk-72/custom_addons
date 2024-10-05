@@ -51,6 +51,8 @@ class AccountMove(models.Model):
     total_discount_amount = fields.Monetary(string='Discount Amount', compute='_get_discount_amount', store=True,
                                             track_visibility='always')
 
+    reference = fields.Char()
+
     @api.depends('line_ids.price_unit', 'line_ids.discount', 'line_ids.quantity')
     def _get_discount_amount(self):
         for rec in self:
