@@ -35,9 +35,11 @@
     'data': [
         'views/res_config_settings_views.xml',
         'views/account_move_views.xml',
+        'views/res_company_views.xml',
         'report/account_move_reports.xml',
         'report/vat_invoice_report_templates.xml',
-        'report/simplified_tax_report_templates.xml'
+        'report/simplified_tax_report_templates.xml',
+        'report/tax_invoice_report_template.xml'
     ],
     'images': ['static/description/banner.jpg'],
     'license': 'AGPL-3',

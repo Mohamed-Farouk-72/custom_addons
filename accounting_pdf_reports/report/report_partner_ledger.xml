@@ -49,9 +49,11 @@
                             <tbody>
                                 <tr>
                                     <td colspan="4">
-                                        <strong t-esc="o.ref"/>
-                                        -
-                                        <strong t-esc="o.name"/>
+                                        <strong t-esc="o.ref" style="font-size:19px"/>
+                                        <strong style="font-size:19px">
+                                            -
+                                        </strong>
+                                        <strong t-esc="o.name" style="font-size:19px"/>
                                     </td>
                                     <td class="text-end">
                                         <strong t-esc="sum_partner(data, o, 'debit')"

@@ -48,6 +48,14 @@ class AccountMove(models.Model):
     qr_page = fields.Boolean(string="Qr Page", compute="_compute_qr",
                              help="Is QR page is enable or not")
 
+    total_discount_amount = fields.Monetary(string='Discount Amount', compute='_get_discount_amount', store=True,
+                                            track_visibility='always')
+
+    @api.depends('line_ids.price_unit', 'line_ids.discount', 'line_ids.quantity')
+    def _get_discount_amount(self):
+        for rec in self:
+            rec.total_discount_amount = sum(rec.line_ids.mapped('discount_amount'))
+
     @api.depends('qr_button')
     def _compute_qr(self):
         """Compute function for checking the value of a field in settings"""
@@ -172,3 +180,20 @@ class AccountMove(models.Model):
                 raise UserError(
                     _('Necessary Requirements To Run This Operation Is '
                       'Not Satisfied'))
+
+
+class QRCodeMoveLine(models.Model):
+    _inherit = 'account.move.line'
+
+    discount_amount = fields.Monetary(string='Discount Amount', compute='_get_discount_amount', store=True)
+    tax_amount = fields.Monetary(string='Tax Amount', compute='_get_tax_amount', store=True)
+
+    @api.depends('price_unit', 'discount', 'quantity')
+    def _get_discount_amount(self):
+        for rec in self:
+            rec.discount_amount = rec.price_unit * (rec.discount / 100.0) * rec.quantity
+
+    @api.depends('price_subtotal', 'price_total')
+    def _get_tax_amount(self):
+        for rec in self:
+            rec.tax_amount = rec.price_total - rec.price_subtotal
