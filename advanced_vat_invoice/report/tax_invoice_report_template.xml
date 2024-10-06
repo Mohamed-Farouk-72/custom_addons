@@ -91,7 +91,7 @@
                             <td width="40%" colspan="2" class="text-center">
                                 <span t-field="o.company_id.account_number"/>
                             </td>
-                            <th width="15%" class="text-right" style="text-align:right">أسم الحساب</th>
+                            <th width="15%" class="text-right" style="text-align:right">رقم الحساب</th>
                         </tr>
                         <tr>
                             <th width="15%" class="text-left" style="text-align:left">IBAN</th>
